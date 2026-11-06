@@ -1,0 +1,117 @@
+<div class="env pl-env">
+  <header class="sec-cab pl-cab">
+    <h2 id="t-espacios">Los espacios en el plano de la finca</h2>
+    <p class="entradilla">La finca vista desde arriba, con sus zonas marcadas. Toca una zona, o elige una de la lista, y mira qué se hace ahí.</p>
+  </header>
+
+  <div class="pl-cuerpo">
+    <div class="pl-mapa">
+      <picture>
+        <source type="image/avif" srcset="img/fotos/p03-480.avif 480w, img/fotos/p03-800.avif 800w, img/fotos/p03-1280.avif 1280w, img/fotos/p03-1920.avif 1920w, img/fotos/p03-2560.avif 2560w" sizes="(min-width:1240px) 760px, (min-width:900px) 66vw, calc(100vw - 32px)">
+        <source type="image/webp" srcset="img/fotos/p03-480.webp 480w, img/fotos/p03-800.webp 800w, img/fotos/p03-1280.webp 1280w, img/fotos/p03-1920.webp 1920w, img/fotos/p03-2560.webp 2560w" sizes="(min-width:1240px) 760px, (min-width:900px) 66vw, calc(100vw - 32px)">
+        <img src="img/fotos/p03-1280.jpg" srcset="img/fotos/p03-480.jpg 480w, img/fotos/p03-800.jpg 800w, img/fotos/p03-1280.jpg 1280w, img/fotos/p03-1920.jpg 1920w, img/fotos/p03-2560.jpg 2560w" sizes="(min-width:1240px) 760px, (min-width:900px) 66vw, calc(100vw - 32px)" width="2560" height="1440" loading="lazy" decoding="async" alt="Foto cenital de la finca hecha con dron: el tejado naranja de la casa, la terraza con barandilla a su derecha y las mesas de picnic de madera del merendero en el prado, con un círculo de fuego">
+      </picture>
+    </div>
+
+    <div class="pl-lista" id="plLista"></div>
+
+    <div class="pl-clave">
+      <p class="nota pl-clave-i"><i class="pl-clave-sol" aria-hidden="true"></i>Línea continua: lo que se ve en la foto.</p>
+      <p class="nota pl-clave-i"><i class="pl-clave-disc" aria-hidden="true"></i>Línea discontinua: los espacios de dentro, colocados a ojo, por confirmar con el dueño.</p>
+      <p class="nota pl-clave-i">Los recuadros del borde señalan lo que queda fuera de la foto. Foto del dron, septiembre de 2021.</p>
+    </div>
+
+    <div class="pl-ficha" id="plFicha"></div>
+  </div>
+
+  <!-- Sin JavaScript: la misma información, sin interacción. El script la quita al montar el plano. -->
+  <ol class="pl-todas" id="plTodas">
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p07-800.jpg" srcset="img/fotos/p07-480.jpg 480w, img/fotos/p07-800.jpg 800w, img/fotos/p07-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="La casa vista desde el prado, con el tejado de teja, los ventanales y árboles alrededor"></div>
+      <div>
+        <h3>La casa y el tejado</h3>
+        <p>La casa es granate, con tejado de teja naranja y zócalo de piedra, en una ladera de prado y frutales. Desde arriba solo se ve el tejado; lo que hay debajo está en las zonas de dentro.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p15-800.jpg" srcset="img/fotos/p15-480.jpg 480w, img/fotos/p15-800.jpg 800w, img/fotos/p15-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="La terraza con barandilla, sillas de madera y mesas, frente a un valle verde con eucaliptos bajo un cielo azul"></div>
+      <div>
+        <h3>La terraza</h3>
+        <p>Una terraza elevada, de baldosa, con barandilla por todo el borde y vistas al valle. Hay sillas de madera, bancos y mesas, y da al lado del merendero.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p08-800.jpg" srcset="img/fotos/p08-480.jpg 480w, img/fotos/p08-800.jpg 800w, img/fotos/p08-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="Mesas de picnic de madera sobre la hierba, con la casa y su salón acristalado detrás"></div>
+      <div>
+        <h3>El merendero y el círculo de fuego</h3>
+        <p>Mesas de picnic de madera sobre la hierba, junto a la casa, con un círculo de fuego en el suelo. Al lado hay un salón de cristal que se abre a este prado.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p05-800.jpg" srcset="img/fotos/p05-480.jpg 480w, img/fotos/p05-800.jpg 800w, img/fotos/p05-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="La fachada granate de la casa vista desde abajo, con la escalera que sube al porche, un patio de losa al pie y un seto"></div>
+      <div>
+        <h3>La entrada y el patio</h3>
+        <p>Delante de la casa hay un suelo de hormigón y, al pie de la escalera que sube al porche, un patio pequeño de losa con un seto al lado.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+        <p class="nota">Por dónde se entra y dónde se aparca: <span class="pend">[por confirmar]</span>.</p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p18-800.jpg" srcset="img/fotos/p18-480.jpg 480w, img/fotos/p18-800.jpg 800w, img/fotos/p18-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="El salón de paredes rojas con ventilador de techo, sofá, mesa baja y vitrinas, y las mesas al fondo"></div>
+      <div>
+        <h3>El salón y la barra</h3>
+        <p>El salón principal, de paredes rojas, con ventilador de techo, sofá y vitrinas, y la barra, con pared verde, focos colgantes y botellero. Era la cafetería.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+        <p class="nota">Las fotos amuebladas son de septiembre de 2021. Hoy el salón está vacío. Esta zona está colocada a ojo en el plano, por confirmar con el dueño.</p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p22-800.jpg" srcset="img/fotos/p22-480.jpg 480w, img/fotos/p22-800.jpg 800w, img/fotos/p22-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="La galería acristalada con techo de madera, estores de bambú, mesas con sillas y la pared de rayas rojas y blancas"></div>
+      <div>
+        <h3>La galería de las rayas</h3>
+        <p>Una galería acristalada con techo de madera, estores de bambú y una pared de rayas rojas y blancas. Tiene mesas con vistas a la finca.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+        <p class="nota">Las fotos son de septiembre de 2021. Esta zona está colocada a ojo en el plano, por confirmar con el dueño.</p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p26-800.jpg" srcset="img/fotos/p26-480.jpg 480w, img/fotos/p26-800.jpg 800w, img/fotos/p26-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="El comedor grande, con mesas redondas y largas con manteles y sillas de madera"></div>
+      <div>
+        <h3>El comedor y la cocina</h3>
+        <p>Un comedor grande con muchas mesas, para sentarse todos juntos, y una cocina industrial con fogones, plancha, mesas de acero y cámara.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+        <p class="nota">Qué incluye el alquiler de la cocina y del menaje: <span class="pend">[por confirmar]</span>. Esta zona está colocada a ojo en el plano, por confirmar con el dueño.</p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p33-800.jpg" srcset="img/fotos/p33-480.jpg 480w, img/fotos/p33-800.jpg 800w, img/fotos/p33-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="Un vestuario de paredes amarillas con un banco de madera y una puerta oscura abierta"></div>
+      <div>
+        <h3>Los vestuarios</h3>
+        <p>Vestuarios con duchas y aseos, de paredes amarillas, con bancos de madera y dos lavabos con flores.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+        <p class="nota">Esta zona está colocada a ojo en el plano, por confirmar con el dueño.</p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p11-800.jpg" srcset="img/fotos/p11-480.jpg 480w, img/fotos/p11-800.jpg 800w, img/fotos/p11-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="Un campo de fútbol de hierba con una portería, rodeado de árboles y monte"></div>
+      <div>
+        <h3>El campo de fútbol</h3>
+        <p>Un campo de fútbol de hierba, con porterías y árboles alrededor, aparte de la casa.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+        <p class="nota">No sale en la foto del dron: está fuera del encuadre.</p>
+      </div>
+    </li>
+    <li class="pl-todas-i">
+      <div class="pl-todas-foto"><img src="img/fotos/p13-800.jpg" srcset="img/fotos/p13-480.jpg 480w, img/fotos/p13-800.jpg 800w, img/fotos/p13-1280.jpg 1280w" sizes="(min-width:900px) 33vw, 100vw" loading="lazy" decoding="async" alt="Un prado verde con frutales bajo un cielo azul"></div>
+      <div>
+        <h3>El prado de frutales</h3>
+        <p>La ladera de prado con frutales en la que está la casa, entre eucaliptos y pinos, con una mesa de picnic de madera bajo un árbol grande.</p>
+        <p class="pl-aforo">Aforo: <span class="pend">[aforo]</span></p>
+        <p class="nota">Queda fuera del encuadre de esta foto.</p>
+      </div>
+    </li>
+  </ol>
+</div>

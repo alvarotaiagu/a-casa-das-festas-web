@@ -1,0 +1,99 @@
+/* =====================================================================
+   A Casa das Festas · «Un día en la finca» (js/dia.js, partes/dia.html)
+   Todo cuelga de #dia. Usa las variables de sistema.css y no redefine ninguna.
+   JS pone en #diaPieza las variables de la hora: --br --sa --se (filtro de la
+   foto), --tono/--ta (capa multiplicada), --glow/--ga/--gx/--gy (brillo del sol
+   o la luna), --vig (viñeta), --cielo (ventana del reloj) y --ti (tinta del reloj).
+   ===================================================================== */
+
+#dia .dia-pieza{
+  --br:1;--sa:1;--se:0;--tono:255 255 255;--ta:0;--glow:255 248 230;--ga:.15;--gx:50%;--gy:10%;--vig:.1;--cielo:230 238 241;--ti:36 21 23;
+  position:relative;display:grid;grid-template-columns:minmax(0,1fr);min-width:0;
+}
+#dia .dia-escena{min-width:0}
+#dia .dia-aviso{margin-top:20px;max-width:68ch}
+
+/* ---------- Foto y capas de luz ---------- */
+#dia .dia-vista{position:relative;aspect-ratio:3/2;overflow:hidden;isolation:isolate;background:#16100f;box-shadow:0 0 0 1px var(--linea)}
+#dia.dia-js .dia-vista{cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+#dia.dia-js .dia-vista.dia-arrastra{cursor:grabbing}
+#dia .dia-capas{position:absolute;inset:0;filter:brightness(var(--br)) saturate(var(--sa)) sepia(var(--se))}
+#dia .dia-capa{position:absolute;inset:0}
+#dia .dia-capa:not(:first-child){opacity:0}
+#dia .dia-capa picture{position:absolute;inset:0;display:block;max-width:none}
+#dia .dia-capa img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:var(--pos,50% 50%);display:block;-webkit-user-drag:none}
+#dia .dia-tono{position:absolute;inset:0;background:rgb(var(--tono));opacity:var(--ta);mix-blend-mode:multiply;pointer-events:none}
+#dia .dia-brillo{position:absolute;inset:0;background:radial-gradient(120% 100% at var(--gx) var(--gy),rgb(var(--glow) / var(--ga)),transparent 72%);mix-blend-mode:overlay;pointer-events:none}
+#dia .dia-vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 38%,rgb(4 7 18 / var(--vig)) 100%);pointer-events:none}
+#dia .dia-luces{position:absolute;inset:0;pointer-events:none}
+#dia .dia-luz{position:absolute;inset:0;mix-blend-mode:screen;opacity:0;pointer-events:none}
+#dia .dia-spot{position:absolute;aspect-ratio:1;transform:translate(-50%,-50%);
+  background:radial-gradient(circle closest-side,rgb(255 214 140 / .95),rgb(255 170 80 / .45) 42%,transparent)}
+/* luces de verbena: dibujadas, solo de noche */
+#dia .dia-gl{position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none;mix-blend-mode:screen;opacity:0}
+#dia .dia-hilo{fill:none;stroke:rgb(10 8 6 / .7);stroke-width:.7}
+#dia .dia-nucleo{fill:#FFEBC0}
+#dia .dia-tapa{stroke:rgb(10 8 6 / .8);stroke-width:1.4;stroke-linecap:round}
+@keyframes dia-titila{0%,100%{opacity:1}50%{opacity:.72}}
+#dia .dia-titila .dia-brillob{animation:dia-titila 2.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+
+/* ---------- Mando: deslizador y horas ---------- */
+#dia .dia-mando{display:grid;gap:2px;padding-top:16px}
+#dia .dia-lab{font:700 var(--t-xs)/1.2 var(--f-txt);letter-spacing:.1em;text-transform:uppercase;color:var(--tinta)}
+#dia .dia-ayuda{font-size:var(--t-xs);line-height:1.4;color:var(--tinta-3)}
+#dia .dia-rango{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:4px 0 0;padding:0;background:transparent;border-radius:0;cursor:pointer;touch-action:pan-y}
+#dia .dia-rango:focus-visible{outline:2px solid var(--tinta);outline-offset:2px}
+#dia .dia-rango::-webkit-slider-runnable-track{height:10px;border-radius:0;background:linear-gradient(90deg,#E6EEF1 0%,#E9ECE4 20%,#F0CB87 40%,#4B3566 60%,#101B31 80%,#0A1224 100%);box-shadow:inset 0 0 0 1px var(--tinta)}
+#dia .dia-rango::-moz-range-track{height:10px;border-radius:0;background:linear-gradient(90deg,#E6EEF1 0%,#E9ECE4 20%,#F0CB87 40%,#4B3566 60%,#101B31 80%,#0A1224 100%);box-shadow:inset 0 0 0 1px var(--tinta)}
+#dia .dia-rango::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:0;background:var(--rojo);border:3px solid var(--papel);box-shadow:0 0 0 2px var(--tinta)}
+#dia .dia-rango::-moz-range-thumb{width:22px;height:22px;border-radius:0;background:var(--rojo);border:3px solid var(--papel);box-shadow:0 0 0 2px var(--tinta)}
+#dia .dia-hitos{position:relative;height:52px}
+#dia .dia-hito{position:absolute;top:0;left:calc(14px + (100% - 28px) * var(--k) / 5);transform:translateX(-50%);display:grid;justify-items:center;align-content:start;gap:3px;min-width:44px;min-height:44px;padding:4px 2px;background:transparent;border:0;border-radius:0;color:var(--tinta-2);transition:background-color .18s}
+#dia .dia-hito:hover{background:var(--papel-2)}
+#dia .dia-hito b{font:700 var(--t-s)/1 var(--f-txt);font-variant-numeric:tabular-nums;padding-bottom:2px;border-bottom:2px solid transparent}
+#dia .dia-hito span{font:500 .75rem/1.1 var(--f-txt);white-space:nowrap}
+#dia .dia-hito[aria-current="true"]{color:var(--tinta)}
+#dia .dia-hito[aria-current="true"] b{border-bottom-color:var(--rojo)}
+
+/* ---------- Panel: reloj, hora y parada ---------- */
+#dia .dia-panel{position:relative;z-index:2;min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:end;gap:16px 18px;margin-top:12px;padding-top:20px;border-top:3px solid var(--tinta);background:var(--papel)}
+#dia .dia-dial{width:clamp(132px,38vw,160px);background:rgb(var(--cielo));overflow:hidden;box-shadow:0 0 0 1px var(--tinta)}
+#dia .dia-dial svg{display:block;width:100%;height:auto;max-width:none}
+#dia .dia-arco{fill:rgb(var(--ti) / .08);stroke:rgb(var(--ti) / .65);stroke-width:1.6;stroke-dasharray:1.5 5;stroke-linecap:round}
+#dia .dia-hor{stroke:rgb(var(--ti) / .65);stroke-width:1.6}
+#dia .dia-hora{display:grid;gap:6px;min-width:0}
+#dia .dia-hora b{font:700 clamp(1.9rem,1.2rem + 2.6vw,2.8rem)/1 var(--f-tit);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+#dia .dia-hora span{font:700 var(--t-xs)/1.2 var(--f-txt);letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-2)}
+#dia .dia-info{grid-column:1 / -1;display:grid;gap:10px;align-content:start}
+#dia .dia-nombre{margin:0}
+#dia .dia-esp{display:flex;align-items:center;gap:8px;font:700 var(--t-xs)/1.3 var(--f-txt);letter-spacing:.08em;text-transform:uppercase;color:var(--verde)}
+#dia .dia-esp::before{content:"";flex:none;width:8px;height:8px;background:var(--verde)}
+#dia .dia-txt{max-width:44ch;color:var(--tinta-2);min-height:calc(5 * 1.55em)}
+
+/* ---------- Sin JS: la lista de paradas con sus textos ---------- */
+#dia .dia-lista{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:0;align-content:start;min-width:0}
+#dia .dia-it{display:grid;gap:4px;padding:16px 0;border-top:1px solid var(--linea)}
+#dia .dia-it:first-child{border-top:3px solid var(--tinta)}
+#dia .dia-it-h{font:700 var(--t-s)/1 var(--f-txt);font-variant-numeric:tabular-nums}
+#dia .dia-it-t{margin:0}
+#dia .dia-it-e{font:700 var(--t-xs)/1.3 var(--f-txt);letter-spacing:.08em;text-transform:uppercase;color:var(--verde)}
+#dia .dia-it-x{max-width:52ch;color:var(--tinta-2)}
+#dia.dia-js .dia-lista{display:none}
+
+/* ---------- Escritorio: foto grande y panel que se le monta encima ---------- */
+@media (min-width:900px){
+  #dia .dia-pieza{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);align-items:start}
+  #dia .dia-panel{
+    margin:clamp(24px,4vw,56px) 0 0 calc(-1 * clamp(32px,4.5vw,64px));
+    padding:clamp(20px,2.4vw,32px);
+    border:1px solid var(--linea);border-top:3px solid var(--tinta);
+    box-shadow:0 18px 40px -28px rgb(36 21 23 / .45);
+  }
+  #dia .dia-dial{width:clamp(130px,13vw,160px)}
+  #dia .dia-lista{margin:0 0 0 clamp(24px,3vw,48px)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  #dia .dia-hito{transition:none}
+  #dia .dia-brillob{animation:none!important}
+}

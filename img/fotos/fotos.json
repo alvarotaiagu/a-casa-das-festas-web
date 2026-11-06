@@ -1,0 +1,411 @@
+[
+ {
+  "clave": "p01",
+  "nombre": "01-portada-dron-casa-y-ria.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920,
+   2560
+  ],
+  "ancho": 2560,
+  "alto": 1440
+ },
+ {
+  "clave": "p02",
+  "nombre": "02-dron-casa-alternativa.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1440
+ },
+ {
+  "clave": "p03",
+  "nombre": "03-dron-cenital-terraza-y-mesas.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920,
+   2560
+  ],
+  "ancho": 2560,
+  "alto": 1440
+ },
+ {
+  "clave": "p04",
+  "nombre": "04-dron-finca-frutales.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1440
+ },
+ {
+  "clave": "p05",
+  "nombre": "05-fachada-principal.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p06",
+  "nombre": "06-casa-entre-frutales.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p07",
+  "nombre": "07-casa-desde-el-prado.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p08",
+  "nombre": "08-merendero-y-casa.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p09",
+  "nombre": "09-merendero-y-salon-acristalado.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p10",
+  "nombre": "10-mesa-bajo-el-arbol.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p11",
+  "nombre": "11-campo-de-futbol.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p12",
+  "nombre": "12-finca-y-monte.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p13",
+  "nombre": "13-finca-verde-frutales.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p14",
+  "nombre": "14-vista-desde-el-porche.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p15",
+  "nombre": "15-terraza-con-vistas.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p16",
+  "nombre": "16-terraza-mesa.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p17",
+  "nombre": "17-terraza-y-casa.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p18",
+  "nombre": "18-salon-principal.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p19",
+  "nombre": "19-salon-barra-y-ventanales.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p20",
+  "nombre": "20-barra.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p21",
+  "nombre": "21-salon-entre-cortinas.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p22",
+  "nombre": "22-galeria-acristalada.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p23",
+  "nombre": "23-galeria-con-vistas.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p24",
+  "nombre": "24-ventanal-a-la-finca.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p25",
+  "nombre": "25-salon-de-cristal-al-jardin.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p26",
+  "nombre": "26-comedor-grande.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p27",
+  "nombre": "27-comedor-grande-2.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p28",
+  "nombre": "28-cocina-industrial.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p29",
+  "nombre": "29-cocina-industrial-2.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p30",
+  "nombre": "30-dormir-colchones-salon.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p31",
+  "nombre": "31-dormir-galeria-con-vista.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p32",
+  "nombre": "32-aseos-lavabos.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1920
+ },
+ {
+  "clave": "p33",
+  "nombre": "33-vestuario.jpg",
+  "anchos": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "ancho": 2560,
+  "alto": 1707
+ },
+ {
+  "clave": "p34",
+  "nombre": "34-ducha.jpg",
+  "anchos": [
+   480,
+   800,
+   1280
+  ],
+  "ancho": 1707,
+  "alto": 2560
+ }
+]

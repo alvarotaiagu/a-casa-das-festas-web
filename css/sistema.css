@@ -1,0 +1,122 @@
+/* =====================================================================
+   A Casa das Festas · sistema común («El toldo», boceto B)
+   Variables, base, letra, botones, secciones y foco. Lo leen TODOS los
+   módulos (plano.css, dia.css, web.css). Nadie lo redefine: si un módulo
+   necesita un color, usa estas variables.
+   Forma: todo en ángulo recto (radio 0). Un solo tema, claro.
+   ===================================================================== */
+
+:root{
+  /* rayas del toldo (la pared de la galería) */
+  --rojo:#A8323A;          /* raya roja, botones principales */
+  --rojo-hover:#B83B44;
+  --rojo-os:#7E2029;       /* riel del toldo, rojo para texto pequeño sobre claro */
+  --blanco:#F2EEE8;        /* raya blanca */
+  /* fondos */
+  --papel:#F6F4F1;         /* fondo general: blanco roto, frío, sin crema */
+  --papel-2:#ECE7E1;       /* superficies hundidas, hover */
+  --linea:#D9D1C8;         /* filetes y bordes */
+  /* tinta */
+  --tinta:#241517;         /* tinta granate: texto, cabecera, pie */
+  --tinta-2:#5A4644;       /* texto secundario (7:1 sobre --papel) */
+  --tinta-3:#77615E;       /* notas pequeñas (4.9:1 sobre --papel) */
+  /* detalles: SOLO banderines, chips y algún acento pequeño */
+  --verde:#2E5A33;         /* verde de la barra */
+  --eucalipto:#6E8A7A;
+  --bambu:#C9A26A;
+  --teja:#CF6A3F;
+  --granate:#8F2D25;       /* fachada (logo) */
+  /* lo que falta del dueño: [aforo], [precio]… */
+  --pendiente:#8A4B12;
+  --pendiente-fondo:#F5E6D3;
+
+  /* letra */
+  --f-tit:"Unbounded",system-ui,sans-serif;
+  --f-txt:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --t-xs:.8125rem;  /* 13 */
+  --t-s:.9375rem;   /* 15 */
+  --t-m:1.0625rem;  /* 17, texto */
+  --t-l:1.25rem;
+  --t-h3:clamp(1.15rem,1rem + .6vw,1.45rem);
+  --t-h2:clamp(1.75rem,1.2rem + 2.4vw,3.1rem);
+  --t-h1:clamp(2.35rem,1.4rem + 4.6vw,5.4rem);
+
+  /* espacio y medidas */
+  --ancho:1240px;
+  --margen:clamp(16px,4vw,48px);
+  --sec:clamp(72px,10vw,140px);   /* aire vertical entre secciones */
+  --cab:64px;                     /* alto de la cabecera */
+  --ease:cubic-bezier(.16,1,.3,1);
+  --rebote:cubic-bezier(.22,1.28,.36,1);
+
+  /* capas (no se inventan otras) */
+  --z-toldo:5; --z-cab:20; --z-menu:30; --z-cookies:40; --z-mando:45; --z-foco:50;
+
+  color-scheme:light;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--cab) + 12px)}
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 var(--t-m)/1.55 var(--f-txt);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,svg,picture,video{display:block;max-width:100%}
+img{height:auto}
+h1,h2,h3,h4,h5,p,ul,ol,dl,dd,figure,blockquote{margin:0}
+ul[class],ol[class]{list-style:none;padding:0}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:default}
+[hidden]{display:none!important}
+::selection{background:var(--rojo);color:#fff}
+
+/* ---------- letra ---------- */
+.tit-1,.tit-2,.tit-3,h1,h2,h3{font-family:var(--f-tit);font-weight:700;letter-spacing:-.025em;line-height:1.05;text-wrap:balance}
+h1,.tit-1{font-size:var(--t-h1);line-height:1;letter-spacing:-.035em}
+h2,.tit-2{font-size:var(--t-h2)}
+h3,.tit-3{font-size:var(--t-h3);letter-spacing:-.015em;line-height:1.15}
+.entradilla{font-size:var(--t-l);line-height:1.5;color:var(--tinta-2);max-width:58ch}
+.nota{font-size:var(--t-xs);line-height:1.5;color:var(--tinta-3)}
+.sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* lo que no se sabe todavía: siempre así, nunca inventado */
+.pend{font:500 .82em/1.3 var(--f-txt);color:var(--pendiente);background:var(--pendiente-fondo);padding:.12em .42em;white-space:nowrap;letter-spacing:0}
+
+/* ---------- maqueta ---------- */
+.env{width:100%;max-width:var(--ancho);margin-inline:auto;padding-inline:var(--margen)}
+.sec{padding-block:var(--sec);position:relative}
+.sec-cab{display:grid;gap:18px;margin-bottom:clamp(32px,5vw,64px);max-width:68ch}
+
+/* ---------- botones (rectos, sin radio) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;padding:.85em 1.4em;border:2px solid var(--rojo);background:var(--rojo);color:#fff;font:700 var(--t-s)/1 var(--f-txt);letter-spacing:.01em;text-decoration:none;white-space:nowrap;border-radius:0;transition:background-color .18s,border-color .18s,color .18s,transform .12s var(--ease)}
+.btn:hover{background:var(--rojo-hover);border-color:var(--rojo-hover);text-decoration:none}
+.btn:active{transform:translateY(1px)}
+.btn--hueco{background:transparent;color:var(--tinta);border-color:var(--tinta)}
+.btn--hueco:hover{background:var(--tinta);border-color:var(--tinta);color:var(--papel)}
+.btn--claro{background:var(--papel);border-color:var(--papel);color:var(--tinta)}
+.btn--claro:hover{background:#fff;border-color:#fff}
+.btn:disabled{opacity:.4;pointer-events:none}
+
+/* botones de opción (Arma tu fiesta, calendario, plano…) */
+.op{border:1.5px solid var(--tinta);background:transparent;color:var(--tinta);font:600 var(--t-s)/1.15 var(--f-txt);padding:10px 14px;min-height:44px;border-radius:0;text-align:left;transition:background-color .18s,color .18s,border-color .18s,transform .12s}
+.op:hover{background:var(--papel-2)}
+.op:active{transform:translateY(1px)}
+.op[aria-pressed="true"],.op[aria-selected="true"]{background:var(--rojo);border-color:var(--rojo);color:#fff}
+
+/* ---------- foco ----------
+   Contorno de 2 px en tinta + un banderín que cuelga bajo el elemento
+   (lo pone js/base.js: #foco-banderin). Sobre fondos oscuros, .sobre-oscuro. */
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--tinta);outline-offset:3px}
+.sobre-oscuro :focus-visible,.sobre-oscuro:focus-visible{outline-color:var(--blanco)}
+#foco-banderin{position:absolute;left:0;top:0;width:16px;height:20px;pointer-events:none;z-index:var(--z-foco);opacity:0;transform-origin:50% 0;transition:opacity .15s}
+#foco-banderin.visto{opacity:1}
+
+/* ---------- fotos ---------- */
+.foto{position:relative;overflow:hidden;background:var(--papel-2)}
+.foto img{width:100%;height:100%;object-fit:cover}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}

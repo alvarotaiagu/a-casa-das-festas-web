@@ -1,0 +1,20 @@
+/* Páginas legales y 404. Depende de css/sistema.css */
+.legal-cab{background:var(--tinta);color:var(--blanco);border-bottom:5px solid var(--rojo)}
+.legal-cab .env{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.legal-cab a{color:var(--blanco);font-weight:600}
+.legal-cab__logo{background:var(--papel);padding:6px 10px}
+.legal-cab__logo img{height:24px;width:auto}
+.legal{padding-block:clamp(48px,7vw,96px)}
+.legal .env{max-width:820px;display:grid;gap:16px}
+.legal h1{font-size:clamp(2rem,1.4rem + 2.6vw,3.2rem);margin-bottom:10px}
+.legal h2{font-size:1.3rem;margin-top:22px}
+.legal p,.legal li{max-width:68ch;color:var(--tinta-2)}
+.legal ul{padding-left:1.2em;display:grid;gap:8px}
+.legal .pend{white-space:normal}
+.legal__dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;border-top:2px solid var(--tinta);padding-top:14px}
+.legal__dl dt{font-weight:700;font-size:var(--t-s)}
+.legal__dl dd{margin:0}
+.legal--404 .env{justify-items:start}
+.legal-pie{border-top:1px solid var(--linea);padding-block:24px}
+.legal-pie .env{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:var(--t-s)}
+@media (max-width:520px){ .legal__dl{grid-template-columns:1fr} .legal__dl dd{margin-bottom:6px} }

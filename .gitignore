@@ -1,0 +1,15 @@
+# solo en local: material de origen y notas internas
+fotos-originales/
+fotos-seleccion/
+hoja-seleccion.jpg
+PENDIENTES.md
+node_modules/
+
+# fotos generadas que la página no usa (scripts/fotos.mjs las hace todas)
+img/fotos/p02-*
+img/fotos/p12-*
+img/fotos/p14-*
+img/fotos/p21-*
+img/fotos/p24-*
+img/fotos/p25-*
+img/fotos/p29-*
