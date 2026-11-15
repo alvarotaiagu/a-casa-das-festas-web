@@ -44,8 +44,10 @@
     io.observe(el);
   };
 
-  // anchos que existen en img/fotos (scripts/fotos.mjs): p34 es vertical y no llega a 1920
-  const ANCHOS = { p01: [480, 800, 1280, 1920, 2560], p03: [480, 800, 1280, 1920, 2560], p34: [480, 800, 1280] };
+  // anchos que existen en img/fotos (scripts/fotos.mjs): p34 es vertical y no llega a 1920;
+  // p35-p38 son fotogramas del vídeo del dueño (2026), de 864 px
+  const V = [480, 800];
+  const ANCHOS = { p01: [480, 800, 1280, 1920, 2560], p03: [480, 800, 1280, 1920, 2560], p34: [480, 800, 1280], p35: V, p36: V, p37: V, p38: V };
   const anchos = (c) => ANCHOS[c] || [480, 800, 1280, 1920];
   const foto = (c, w) => {
     const a = anchos(c);

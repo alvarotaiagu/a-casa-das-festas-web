@@ -1,7 +1,8 @@
 /* =====================================================================
    A Casa das Festas · pedir fecha (SIMULADO: no envía ni guarda nada)
    Un calendario con dos modos:
-     - Una fiesta: un día (+ la noche si os quedáis a dormir)
+     - Una fiesta: de las 10:00 de un día a las 12:00 del siguiente (375 €),
+       o hasta las 21:00 con la zona de descanso (625 €)
      - Verano, por noches: llegada y salida, mínimo dos noches. Solo con
        CASA_CONFIG.verano = true. La temporada (15 jun - 15 sep) es un SUPUESTO.
    Los días ocupados son de ejemplo y estables (pseudoazar por fecha).
@@ -58,13 +59,15 @@
     for (let d = 1; d <= n; d++) {
       const f = dia(mes.getFullYear(), mes.getMonth(), d), b = document.createElement('button');
       b.type = 'button'; b.textContent = d; b.dataset.k = clave(f);
-      const oc = ocupado(f), ok = valido(f) && !oc;
+      // una fiesta va de las 10:00 de un día a las 12:00 (o 21:00) del siguiente: el día, el siguiente y el anterior (que acaba a las 12:00 de este) han de estar libres
+      const oc = ocupado(f), sigOc = modo === 'fiesta' && ocupado(mas(f, 1)), antOc = modo === 'fiesta' && ocupado(mas(f, -1));
+      const ok = valido(f) && !oc && !sigOc && !antOc;
       b.disabled = !ok;
       if (f.getDay() === 5 || f.getDay() === 6 || f.getDay() === 0) b.classList.add('finde');
-      let estado = oc ? 'ocupado' : (valido(f) ? 'libre' : 'no disponible');
+      let estado = oc ? 'ocupado' : !valido(f) ? 'no disponible' : sigOc ? 'no disponible, el día siguiente está ocupado' : antOc ? 'no disponible, la fiesta del día anterior acaba ese día a las 12:00' : 'libre';
       if (modo === 'fiesta') {
         if (igual(f, fecha)) { b.classList.add('extremo'); estado = 'tu fecha'; b.setAttribute('aria-pressed', 'true'); }
-        else if (fecha && dormir() && igual(f, mas(fecha, 1))) { b.classList.add('en-rango'); estado = 'noche reservada'; }
+        else if (fecha && igual(f, mas(fecha, 1))) { b.classList.add('en-rango'); estado = 'salida de tu fiesta'; }
       } else {
         if (igual(f, ini) || igual(f, fin)) { b.classList.add('extremo'); estado = igual(f, ini) ? 'llegada' : 'salida'; b.setAttribute('aria-pressed', 'true'); }
         else if (ini && fin && f > ini && f < fin) { b.classList.add('en-rango'); estado = 'noche reservada'; }
@@ -80,10 +83,8 @@
   }
   function elegir(f) {
     msg('');
-    if (modo === 'fiesta') {
-      fecha = f;
-      if (dormir() && ocupado(mas(f, 1))) { msg('El día siguiente está ocupado: esa fiesta tendría que acabar sin dormir.'); $('ct-dormir').checked = false; }
-    } else if (!ini || fin || f <= ini) { ini = f; fin = null; }
+    if (modo === 'fiesta') fecha = f;
+    else if (!ini || fin || f <= ini) { ini = f; fin = null; }
     else if ((f - ini) / 864e5 < 2) msg('En verano, mínimo dos noches.');
     else if (!libreRango(ini, f)) msg('Hay noches ocupadas en medio: elige otra salida.');
     else fin = f;
@@ -101,12 +102,14 @@
     let listo = false;
     if (modo === 'fiesta') {
       const g = gente();
-      fila(dl, 'Fecha', fecha ? largo(fecha) : 'Elige un día');
+      fila(dl, 'Entrada', fecha ? `${largo(fecha)}, a las 10:00` : 'Elige un día');
+      fila(dl, 'Salida', fecha ? `${largo(mas(fecha, 1))}, a las ${dormir() ? '21:00' : '12:00'}` : 'Elige un día');
       fila(dl, 'Qué', $('ct-tipo').selectedOptions[0].textContent);
       fila(dl, 'Cuántos', g.textContent);
-      fila(dl, 'Dormir', fecha && dormir() ? `sí, hasta el ${largo(mas(fecha, 1))}` : 'no');
-      fila(dl, 'Aforo', g.dataset.v === '3' ? '[aforo por confirmar]' : '[aforo]', true);
-      fila(dl, 'Precio', '[precio]', true);
+      fila(dl, 'Zona de descanso', dormir() ? 'sí, 20 camas' : 'no');
+      fila(dl, 'Aforo', '70 en el merendero, 30-35 en el comedor');
+      fila(dl, 'Precio', dormir() ? '625 € (fiesta y descanso)' : '375 € (zona de fiesta)');
+      fila(dl, 'Reserva y fianza', '250 €, se devuelve unos días después');
       listo = !!fecha;
     } else {
       const noches = ini && fin ? Math.round((fin - ini) / 864e5) : 0;
@@ -138,16 +141,13 @@
   $('ct-ant').addEventListener('click', () => { mes = dia(mes.getFullYear(), mes.getMonth() - 1, 1); pintar(); });
   $('ct-sig').addEventListener('click', () => { mes = dia(mes.getFullYear(), mes.getMonth() + 1, 1); pintar(); });
   $('ct-tipo').addEventListener('change', resumen);
-  $('ct-dormir').addEventListener('change', () => {
-    if (fecha && dormir() && ocupado(mas(fecha, 1))) { msg('El día siguiente está ocupado: ese día no se puede dormir.'); $('ct-dormir').checked = false; }
-    pintar();
-  });
+  $('ct-dormir').addEventListener('change', () => pintar());
   const botonesGente = [...document.querySelectorAll('#ct-gente button')];
   const ponGente = (v) => botonesGente.forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.v === v)));
   botonesGente.forEach((b) => b.addEventListener('click', () => { ponGente(b.dataset.v); resumen(); }));
   $('ct-btn').addEventListener('click', () => {
     msg(modo === 'fiesta'
-      ? `Petición lista para el ${largo(fecha)}. En la web de verdad le llega al dueño, que te confirma por teléfono o WhatsApp. Aquí no se envía nada.`
+      ? `Petición lista para el ${largo(fecha)}. En la web de verdad le llega al dueño, que te confirma por teléfono o WhatsApp y te dice cómo pagar la reserva. Aquí no se envía nada.`
       : `Petición lista: del ${largo(ini)} al ${largo(fin)}. En la web de verdad se confirma y se paga la señal. Aquí no se envía nada.`, true);
   });
   window.CITA = {

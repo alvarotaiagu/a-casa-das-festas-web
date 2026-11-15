@@ -39,23 +39,23 @@
     { h: 14.5, corto: 'Comida', nombre: 'Comida', esp: 'El merendero',
       clave: 'p08', pos: '50% 50%',
       alt: 'Mesas de picnic de madera sobre el prado del merendero, con la casa granate detrás',
-      t: 'Mesas de picnic de madera junto a la casa y, en el suelo, un círculo de fuego. Se come fuera, en el prado.' },
+      t: 'Mesas de picnic de madera junto a la casa y, al lado, la barbacoa grande y cubierta. El carbón lo traéis vosotros; leña no se permite.' },
     { h: 17.5, corto: 'Partido', nombre: 'Partido', esp: 'El campo de fútbol',
       clave: 'p11', pos: '50% 50%',
       alt: 'Portería de fútbol con red sobre un prado, con frutales y monte al fondo y otra portería más lejos',
-      t: 'Un campo con porterías en el prado, rodeado de frutales y árboles grandes. Para el partido de después de comer, el que sea.' },
+      t: 'Un campo de fútbol en el prado, rodeado de frutales y árboles grandes, y otro de voleibol. Los balones los pone la casa.' },
     { h: 20.5, corto: 'Terraza', nombre: 'Tarde en la terraza', esp: 'La terraza grande',
       clave: 'p15', pos: '50% 62%',
       alt: 'Terraza con sillas de madera y barandilla, frente a un valle de prados y árboles',
       t: 'Barandilla, sillas de madera y el valle delante. Aquí se queda la gente cuando baja el sol.' },
-    { h: 23, corto: 'Cena', nombre: 'Cena', esp: 'La barra y el salón',
-      clave: 'p20', pos: '50% 50%',
-      alt: 'La barra de madera con la pared verde a un lado, la roja al otro y lámparas colgadas del techo',
-      t: 'La barra con la pared verde y los focos colgando. Se cena dentro, en el salón o en el comedor grande. Hasta qué hora hay música: <span class="pend">[normas de ruido]</span>.' },
-    { h: 25.5, corto: 'A dormir', nombre: 'A dormir', esp: 'El salón rojo',
-      clave: 'p30', pos: '50% 20%',
-      alt: 'Salón de paredes rojas con colchones en el suelo, cortinas blancas y la barra verde al fondo',
-      t: 'Se duerme en colchones en el suelo, no hay dormitorios con camas. Cuántos caben: <span class="pend">[plazas]</span>.' }
+    { h: 23, corto: 'Cena', nombre: 'Cena', esp: 'El comedor',
+      clave: 'p37', pos: '50% 50%',
+      alt: 'El comedor con mesas de manteles amarillos, sillas de madera, pared de piedra y apliques en las paredes',
+      t: 'Se cena dentro, en el comedor cubierto, o fuera, que el merendero tiene luz. La música, con cuidado: las casas más cercanas están a 500 metros y de noche no se permite a todo volumen.' },
+    { h: 25.5, corto: 'A dormir', nombre: 'A dormir', esp: 'La zona de descanso',
+      clave: 'p35', pos: '50% 50%',
+      alt: 'Camas individuales con colchón gris y almohada en el salón de paredes rojas',
+      t: 'Si alquiláis también la zona de descanso, subís a dormir: 20 camas individuales, con aseos y duchas de agua caliente. Sábanas, manta y almohada, o saco, los traéis vosotros.' }
   ];
   var N = PARADAS.length - 1;   // índice de la última
 
@@ -72,10 +72,11 @@
   ];
   var OSCURA = [36, 21, 23], CLARA = [246, 244, 241];   // tinta granate y papel del sistema
 
-  // Focos de la barra (parada 4, sobre p20) y del salón (parada 5, sobre p30): [x%, y%, radio%, peso]
+  // Focos de la cena (parada 4, sobre p37): [x%, y%, radio%, peso]
   var FOCOS = {
-    4: [[24, 33, 6, .95], [45, 31, 7, .95], [18, 37, 5, .8], [57, 37, 5, .85], [61, 38, 4.5, .8]],
-    5: [[36, 9.5, 5, .8], [51.4, 9.1, 5, .8], [69.5, 8.2, 5, .75]]
+    // p37 (fotograma 864x496 recortado a 3:2): apliques del pilar y de la pared de piedra, y luces del techo.
+    // p35 no tiene lámparas a la vista: sin focos.
+    4: [[39.6, 12.9, 4.5, .9], [83.7, 34.7, 4.5, .9], [20.5, 21.6, 4, .75], [81.7, 10.7, 4, .6]]
   };
 
   // ---------- Utilidades ----------

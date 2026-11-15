@@ -1,22 +1,23 @@
 /* Genera aviso-legal.html, privacidad.html, cookies.html, accesibilidad.html y 404.html con una plantilla común.
    Uso: node scripts/legales.mjs
-   Titular, NIF, dirección, contacto y registro turístico NO constan: van como PENDIENTE visible. */
+   Datos del titular: correo del dueño (2026-11). El NIF NO consta: va como PENDIENTE visible. */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const P = (t = 'PENDIENTE') => `<span class="pend">${t}</span>`;
+const CORREO = 'josemanuel@barcayvila.com';
+const MAIL = `<a href="mailto:${CORREO}">${CORREO}</a>`;
 
 const TITULAR = `<dl class="legal__dl">
-  <dt>Titular</dt><dd>${P()}</dd>
-  <dt>NIF</dt><dd>${P()}</dd>
+  <dt>Titular</dt><dd>José Manuel Barca Pérez</dd>
+  <dt>NIF</dt><dd>${P('[NIF]')}</dd>
   <dt>Nombre comercial</dt><dd>A Casa das Festas</dd>
-  <dt>Dirección</dt><dd>${P('[dirección]')} · ${P('[municipio]')}</dd>
-  <dt>Teléfono</dt><dd>${P('[teléfono]')}</dd>
-  <dt>Correo</dt><dd>${P('[correo]')}</dd>
-  <dt>Actividad</dt><dd>Alquiler de finca para celebraciones${''}</dd>
-  <dt>Registro turístico</dt><dd>${P('Solo si se alquila para dormir en verano')}</dd>
+  <dt>Domicilio</dt><dd>Lugar de San Miguel de Vilela, parroquia de Vilela, Carballo (A Coruña)</dd>
+  <dt>Teléfono</dt><dd><a href="tel:+34670406421">670 406 421</a></dd>
+  <dt>Correo</dt><dd>${MAIL}</dd>
+  <dt>Actividad</dt><dd>Alquiler de una finca para celebraciones privadas, sin personal</dd>
 </dl>`;
 
 const paginas = {
@@ -26,7 +27,7 @@ const paginas = {
 <p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), estos son los datos del titular de esta web:</p>
 ${TITULAR}
 <h2>Uso de la web</h2>
-<p>Esta web informa sobre A Casa das Festas, una finca que se alquila entera para celebraciones. Los precios, el aforo y las condiciones son los que se confirman al reservar.</p>
+<p>Esta web informa sobre A Casa das Festas, una finca que se alquila para celebraciones privadas. Los precios, el aforo y las condiciones son los que se confirman al reservar.</p>
 <p>Por ahora, el calendario de esta web es una demostración: los días ocupados son de ejemplo y no se envía, se guarda ni se cobra nada.</p>
 <h2>Propiedad intelectual</h2>
 <p>Los textos y las fotografías son de la finca o se usan con su permiso. Las letras Unbounded, Schibsted Grotesk y Sora se usan con su licencia libre (SIL Open Font License).</p>
@@ -49,7 +50,7 @@ ${TITULAR}
 <h2>Con quién se comparten</h2>
 <p>Con nadie, salvo obligación legal y siempre con lo imprescindible.</p>
 <h2>Tus derechos</h2>
-<p>Puedes pedir el acceso, la rectificación, la supresión, la oposición, la limitación o la portabilidad de tus datos escribiendo a ${P('[correo]')}. Si crees que no se han respetado, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es">aepd.es</a>).</p>
+<p>Puedes pedir el acceso, la rectificación, la supresión, la oposición, la limitación o la portabilidad de tus datos escribiendo a ${MAIL}. Si crees que no se han respetado, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es">aepd.es</a>).</p>
 <h2>Lo que guarda esta web en tu navegador</h2>
 <p>Una sola cosa: <code>cdf-cookies</code> en el almacenamiento local, para recordar que ya has visto el aviso de cookies. Más detalles en <a href="cookies.html">cookies</a>.</p>`,
   },
@@ -79,7 +80,7 @@ ${TITULAR}
 <h2>La finca</h2>
 <p>${P('PENDIENTE: cómo es el acceso a la casa, la terraza y los aseos para personas con movilidad reducida.')}</p>
 <h2>Contacto</h2>
-<p>Si encuentras una barrera, escribe a ${P('[correo]')}. Te responderemos y te daremos la información en un formato accesible.</p>`,
+<p>Si encuentras una barrera, escribe a ${MAIL}. Te responderemos y te daremos la información en un formato accesible.</p>`,
   },
 };
 

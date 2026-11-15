@@ -1,6 +1,6 @@
 # A Casa das Festas · «El toldo»
 
-Web de A Casa das Festas (acasadasfestas.com): una finca, antiguo bar-restaurante, que se alquila entera para fiestas y, en verano, quizá para dormir. Es una web estática (HTML, CSS y JS sin framework, sin WebGL), con `noindex` en todas las páginas mientras no se publique. Está solo en local.
+Web de A Casa das Festas (acasadasfestas.com): una finca en Vilela (Carballo), antiguo bar-restaurante, que se alquila para fiestas en dos zonas: la de fiesta (375 €) y la de descanso con 20 camas (250 € más). Los datos son del correo y del vídeo del dueño (noviembre de 2026). Es una web estática (HTML, CSS y JS sin framework, sin WebGL), con `noindex` en todas las páginas mientras no se publique. Está solo en local.
 
 Parte del tablero de bocetos (`../a-casa-das-festas-bocetos/`, publicado en https://claude.ai/artifact/Mhu4a1sB92aatoZtJNoLNX), con la recomendación elegida:
 - el sistema de B, «El toldo»;
@@ -23,14 +23,14 @@ Colores, en `css/sistema.css`:
 Letras: Unbounded para los titulares, Schibsted Grotesk para el texto y Sora solo en el logo (pasada a trazos). Todo en ángulo recto.
 
 ## Orden de la página
-1. **Portada.** El toldo y la guirnalda sobre la foto del dron con la ría (p01), con «La finca para tu fiesta» y «Pedir fecha». En vertical, la foto va arriba y el texto sobre la tinta, para que la casa no quede debajo del titular.
+1. **Portada.** El toldo y la guirnalda sobre la foto del dron (p01), con «La finca para tu fiesta» y «Pedir fecha». En vertical, la foto va arriba y el texto sobre la tinta, para que la casa no quede debajo del titular.
 2. **Los espacios en el plano de la finca** (módulo `plano`). La foto cenital p03 con 10 zonas. Las de dentro llevan contorno discontinuo y aviso de que están colocadas a ojo.
 3. **Arma tu fiesta.** Qué celebráis, cuántos sois y si os quedáis a dormir. Devuelve los espacios que encajan, y su botón le pasa la elección al calendario (`CITA.rellenar`).
 4. **Un día en la finca** (módulo `dia`, opcional). El recorrido por horas, con el aviso de que las noches son fotos de día teñidas.
-5. **Cocina, comedor y vestuarios.** Rejilla con las fotos y «Qué incluye el alquiler», con lo que se ve y lo pendiente separados.
-6. **Dormir.** Hoy son colchones en el suelo. La pestaña «Verano» está hecha y oculta.
+5. **Cocina, comedor y vestuarios.** Rejilla con las fotos y «Qué incluye el alquiler», con precios, menaje, barbacoa, limpieza, música y reserva, según el correo del dueño.
+6. **Dormir.** La zona de descanso: 20 camas en el salón rojo y la galería (fotogramas del vídeo de 2026, p35 y p36). La pestaña «Verano» está hecha y oculta.
 7. **Pedir fecha.** Calendario simulado y marcado como simulación, con modo fiesta (más la noche) y modo verano por noches (oculto).
-8. **Cómo llegar.** El mapa de Google solo se carga al pulsar y, sin dirección, avisa de que está pendiente. Después, el contacto y el pie.
+8. **Cómo llegar.** Lugar, cómo llegar y contacto (`js/config.js`). El mapa de Google solo se carga al pulsar. Después, el contacto y el pie.
 
 ## Ficheros
 | Fichero | Qué es |
@@ -53,6 +53,7 @@ Letras: Unbounded para los titulares, Schibsted Grotesk para el texto y Sora sol
 - `node scripts/simbolos.mjs`: mete en `index.html` los trazos del logo que usa la cabecera.
 - `node scripts/montar.mjs`: mete `partes/plano.html` y `partes/dia.html` en `index.html`. Se puede repetir.
 - `node scripts/legales.mjs`: páginas legales y 404.
+- `node scripts/huellas.mjs`: pone `?v=<huella>` a los CSS y JS de todas las páginas (caché de Pages). Siempre después de tocar CSS o JS y después de `legales.mjs`.
 - `node verificar.mjs`: la comprobación final, una sola vez al terminar cada tanda. Usa un Chrome, sin capturas, y deja el 3D fuera (no hay).
 - `node scripts/quitar-mando.mjs [--de-verdad]`: quita el mando de maqueta. Ver abajo.
 

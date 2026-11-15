@@ -407,5 +407,45 @@
   ],
   "ancho": 1707,
   "alto": 2560
+ },
+ {
+  "clave": "p35",
+  "nombre": "35-video2026-descanso-salon-camas.jpg",
+  "anchos": [
+   480,
+   800
+  ],
+  "ancho": 864,
+  "alto": 496
+ },
+ {
+  "clave": "p36",
+  "nombre": "36-video2026-descanso-galeria-camas.jpg",
+  "anchos": [
+   480,
+   800
+  ],
+  "ancho": 864,
+  "alto": 496
+ },
+ {
+  "clave": "p37",
+  "nombre": "37-video2026-comedor.jpg",
+  "anchos": [
+   480,
+   800
+  ],
+  "ancho": 864,
+  "alto": 496
+ },
+ {
+  "clave": "p38",
+  "nombre": "38-video2026-barbacoa.jpg",
+  "anchos": [
+   480,
+   800
+  ],
+  "ancho": 864,
+  "alto": 496
  }
 ]

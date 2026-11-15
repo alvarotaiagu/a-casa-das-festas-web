@@ -32,10 +32,11 @@
   };
   const C = CFG.contacto || {}, L = CFG.lugar || {};
   pon('[data-contacto="telefono"]', C.telefono, C.telefonoTel ? 'tel:' + C.telefonoTel : null);
+  pon('[data-contacto="telefono-ingles"]', C.telefonoIngles, C.telefonoInglesTel ? 'tel:' + C.telefonoInglesTel : null);
   pon('[data-contacto="whatsapp"]', C.whatsapp ? 'Escribir por WhatsApp' : '', C.whatsapp);
   pon('[data-contacto="correo"]', C.correo, C.correo ? 'mailto:' + C.correo : null);
+  pon('[data-contacto="instagram"]', C.instagram ? '@' + C.instagram : '', C.instagram ? 'https://www.instagram.com/' + C.instagram + '/' : null);
   pon('[data-lugar="municipio"]', L.municipio);
-  pon('[data-lugar="ria"]', L.ria ? 'de ' + L.ria : '');
   if (CFG.registroTuristico) {
     document.querySelectorAll('[data-registro]').forEach((el) => { el.textContent = CFG.registroTuristico; });
     const rp = document.querySelector('[data-registro-pie]');
@@ -216,35 +217,35 @@
   /* ---------- Arma tu fiesta ---------- */
   const arma = $('arma');
   if (arma) {
+    // Los espacios de la zona de fiesta, como los describe el dueño (correo de 2026-11).
+    // a: aforo que ha dado; sin él, la tarjeta no lleva aforo.
     const ESP = {
-      mer: { n: 'Merendero', f: 'p08', alt: 'Mesas de picnic de madera en el prado, con la casa detrás',
-        u: { c: 'Mesas largas de madera al aire libre para la tarta y la sobremesa, y un círculo de fuego en el suelo.', d: 'Mesas largas para sentarse todos juntos antes de que empiece la fiesta.', p: 'Mesas de picnic de madera para comer juntos al aire libre.', f: 'Mesas de madera al aire libre para comer todos juntos, de los mayores a los críos.', o: 'Mesas de picnic de madera junto a la casa, con un círculo de fuego en el suelo.' } },
-      bar: { n: 'Barra y salón', f: 'p20', alt: 'La barra de madera con la pared verde, focos colgantes y botellero',
-        u: { c: 'La barra para brindar, con el salón de paredes rojas detrás por si cambia el tiempo.', d: 'Barra con botellero y focos colgantes: ahí se junta el grupo.', p: 'Barra para el café y la sobremesa, junto al comedor.', f: 'Barra y sofás en el salón rojo, para quien prefiere estar dentro.', o: 'Barra con pared verde, focos colgantes y botellero, en el salón rojo.' } },
-      com: { n: 'Comedor y cocina', f: 'p26', alt: 'Comedor grande con muchas mesas y sillas de madera',
-        u: { c: 'Comedor grande con muchas mesas y una cocina industrial para dejarlo todo preparado.', d: 'Comedor con muchas mesas y cocina industrial, por si el grupo come en la finca.', p: 'El comedor con muchas mesas y la cocina industrial: fogones, plancha y cámara.', f: 'Comedor con muchas mesas y cocina industrial para preparar la comida allí mismo.', o: 'Comedor grande con muchas mesas y cocina industrial con fogones, plancha y cámara.' } },
-      ter: { n: 'Terraza', f: 'p15', alt: 'Terraza grande con sillas de madera y vistas al valle bajo el cielo azul',
-        u: { c: 'Terraza con vistas al valle para el aperitivo y las fotos.', d: 'Terraza grande con sillas y vistas al valle, para la tarde antes de cenar.', p: 'Terraza con sillas y vistas al valle, para el café al sol.', f: 'Sillas de madera y vistas al valle, para quien prefiere sentarse tranquilo.', o: 'Terraza grande con barandilla, sillas de madera y vistas al valle.' } },
-      cam: { n: 'Campo de fútbol', f: 'p11', alt: 'Campo con portería en un prado, con árboles al fondo',
-        u: { c: 'Campo con porterías para los juegos y el partido.', d: 'Campo con porterías: partido o juegos antes de la cena.', p: 'Un partido entre compañeros o entre peñas en el campo con porterías.', f: 'Prado y campo con porterías para que los niños corran.', o: 'Campo con porterías en el prado, rodeado de árboles.' } },
-      gal: { n: 'Galería de las rayas', f: 'p22', alt: 'Galería acristalada con la pared de rayas rojas y blancas, techo de madera y estores de bambú',
-        u: { c: 'La galería de las rayas, con mesas y luz de tarde, para un grupo que quiere estar más recogido.', d: 'La pared de rayas rojas y blancas: un rincón para las fotos y para sentarse aparte.', p: 'Galería acristalada con mesas, para una mesa aparte o una reunión más pequeña.', f: 'Galería con vistas al prado y mesas, para comer en un sitio más recogido.', o: 'Galería acristalada con techo de madera, estores de bambú y la pared de rayas rojas y blancas.' } },
-      dor: { n: 'Para dormir', f: 'p30', alt: 'Colchones en el suelo del salón de paredes rojas' }
+      mer: { n: 'Merendero', f: 'p08', a: '70 personas sentadas', alt: 'Mesas de picnic de madera en el prado, con la casa detrás',
+        u: { c: 'Mesas largas de madera al aire libre para la tarta y la sobremesa, con sombrillas y luz por la noche.', d: 'Mesas largas para sentarse todos juntos antes de que empiece la fiesta, con luz por la noche.', p: 'Mesas de picnic de madera para comer juntos al aire libre, con sombrillas para el sol.', f: 'Mesas de madera al aire libre para comer todos juntos, de los mayores a los críos.', o: 'Mesas de picnic de madera junto a la casa, con sombrillas y luz por la noche.' } },
+      bbq: { n: 'Barbacoa cubierta', f: 'p38', alt: 'La parrilla grande de la barbacoa, de acero, con su volante para subirla y bajarla, bajo techo',
+        u: { c: 'Una barbacoa profesional grande, cubierta y con fregadero, al lado del merendero.', d: 'La barbacoa grande y cubierta, con luz para cuando cae la noche.', p: 'Barbacoa profesional de gran tamaño, cubierta y con fregadero: para dar de comer a todo el grupo.', f: 'Barbacoa grande y cubierta junto a las mesas: la comida sale de ahí.', o: 'Barbacoa profesional grande, cubierta, con fregadero y luz por la noche.' } },
+      com: { n: 'Comedor y cocina', f: 'p37', a: '30-35 personas', alt: 'El comedor con mesas de manteles amarillos, pared de piedra y aire acondicionado',
+        u: { c: 'Comedor cubierto con aire acondicionado, por si cambia el tiempo, y cocina al lado.', d: 'Comedor cubierto y cocina con nevera industrial para tenerlo todo a mano.', p: 'Comedor cubierto con aire acondicionado y cocina con nevera industrial, fregaderos y fuegos de butano.', f: 'Comedor cubierto y cocina con platos y cubiertos para preparar la comida allí mismo.', o: 'Comedor cubierto con aire acondicionado y cocina con nevera industrial, dos fregaderos y dos fuegos.' } },
+      ter: { n: 'Terraza', f: 'p15', a: '80 m²', alt: 'Terraza grande con sillas de madera y vistas al valle bajo el cielo azul',
+        u: { c: 'Terraza en alto con vistas al valle para el aperitivo y las fotos.', d: 'Terraza en alto con vistas al valle, para la tarde antes de cenar.', p: 'Terraza en alto con vistas al valle, para el café al sol.', f: 'Terraza en alto con mesas y sillas, para quien prefiere sentarse tranquilo.', o: 'Terraza en alto de 80 m², con barandilla, mesas y sillas.' } },
+      cam: { n: 'Fútbol y voleibol', f: 'p11', alt: 'Campo con portería en un prado, con árboles al fondo',
+        u: { c: 'Campo de fútbol y de voleibol, con balones, para los juegos y el partido.', d: 'Campo de fútbol y de voleibol: partido o juegos antes de la cena. Los balones los pone la casa.', p: 'Un partido entre compañeros o entre peñas: hay campo de fútbol y de voleibol, y balones.', f: 'Prado, campo de fútbol y de voleibol para que los niños corran. Hay balones.', o: 'Campo de fútbol y de voleibol en el prado, con balones.' } },
+      dor: { n: 'Zona de descanso', f: 'p35', a: '20 camas', alt: 'Camas individuales con colchón gris en el salón de paredes rojas de la planta alta' }
     };
-    const FRASE_DORMIR = 'Hoy se duerme en colchones en el suelo de los salones y de la galería. No hay dormitorios con camas.';
+    const FRASE_DORMIR = 'Arriba, una zona colectiva con 20 camas individuales, aseos y duchas con agua caliente. Sábanas, manta y almohada, las traéis vosotros. Son 250 € más.';
     const OCA = {
-      c: { para: 'un cumpleaños', pes: { mer: 3, bar: 3, ter: 2, cam: 2, gal: 1, com: 1 } },
-      d: { para: 'una despedida', pes: { bar: 3, ter: 3, mer: 2, gal: 2, com: 1, cam: 1 } },
-      p: { para: 'una comida de peña o de empresa', pes: { com: 3, mer: 3, ter: 2, cam: 2, bar: 1, gal: 1 } },
-      f: { para: 'una reunión de familia', pes: { mer: 3, com: 3, ter: 2, cam: 2, gal: 2, bar: 1 } },
-      o: { para: 'una fiesta', pes: { mer: 2, bar: 2, com: 2, ter: 2, cam: 2, gal: 2 } }
+      c: { para: 'un cumpleaños', pes: { mer: 3, bbq: 3, ter: 2, cam: 2, com: 1 } },
+      d: { para: 'una despedida', pes: { ter: 3, bbq: 3, mer: 2, cam: 2, com: 1 } },
+      p: { para: 'una comida de peña o de empresa', pes: { com: 3, mer: 3, bbq: 3, ter: 2, cam: 2 } },
+      f: { para: 'una reunión de familia', pes: { mer: 3, com: 3, bbq: 2, ter: 2, cam: 2 } },
+      o: { para: 'una fiesta', pes: { mer: 2, bbq: 2, com: 2, ter: 2, cam: 2 } }
     };
     const TAM = {
-      1: { txt: 'menos de 20 personas', mod: { gal: 2, bar: 1, mer: -1, cam: -1 } },
-      2: { txt: 'de 20 a 50 personas', mod: { mer: 1, com: 1 } },
-      3: { txt: 'más de 50 personas', mod: { mer: 2, com: 2, cam: 1, gal: -1 } }
+      1: { txt: 'menos de 20 personas', mod: { com: 1, mer: -1, cam: -1 } },
+      2: { txt: 'de 20 a 50 personas', mod: { mer: 1 } },
+      3: { txt: 'más de 50 personas', mod: { mer: 2, bbq: 1, com: -1 } }
     };
-    const ORDEN = ['mer', 'bar', 'com', 'ter', 'cam', 'gal'];
+    const ORDEN = ['mer', 'bbq', 'com', 'ter', 'cam'];
     const est = { oca: null, tam: null, dor: 'no' };
     const botones = [...arma.querySelectorAll('.op[data-g]')];
     const sum = $('arma-sum'), aviso = $('arma-aviso'), lista = $('arma-lista'), pie = $('arma-pie');
@@ -266,7 +267,6 @@
       b.p.setAttribute('fill', COL3[k]); b.p.setAttribute('stroke-dasharray', 'none'); b.p.setAttribute('stroke-opacity', 0.5);
       anima(b.ent, [{ transform: 'rotate(0deg)' }, { transform: 'rotate(15deg)' }, { transform: 'rotate(-9deg)' }, { transform: 'rotate(5deg)' }, { transform: 'rotate(-2deg)' }, { transform: 'rotate(0deg)' }], { duration: 900, easing: 'ease-out' });
     };
-    const pend = (t) => '<span class="pend">' + t + '</span>';
 
     function render() {
       lista.textContent = '';
@@ -289,14 +289,15 @@
         const fig = document.createElement('div'); fig.className = 'foto';
         fig.appendChild(CDF.picture(e.f, e.alt, '(max-width: 640px) 100vw, (max-width: 900px) 50vw, 360px'));
         const et = document.createElement('div'); et.className = 'arma__et';
-        const chip = dor ? 'Plazas: ' + pend('[plazas]') : est.tam === '1' ? '' : 'Aforo: ' + pend('[aforo]');
+        const chip = e.a ? (dor ? 'Plazas: ' : k === 'ter' ? 'Superficie: ' : 'Aforo: ') + e.a : '';
         et.innerHTML = '<h4>' + e.n + '</h4><p>' + (dor ? FRASE_DORMIR : e.u[est.oca]) + '</p>' + (chip ? '<p>' + chip + '</p>' : '');
         li.append(fig, et);
         lista.appendChild(li);
         anima(li, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0px)' }], { duration: 420, delay: i * 70, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
       });
       sum.textContent = cap(OCA[est.oca].para) + ', ' + TAM[est.tam].txt + ', ' + (est.dor === 'si' ? 'con noche en la finca' : 'solo por el día') + '. Te encajan ' + n + (n === 1 ? ' espacio.' : ' espacios.');
-      if (est.tam === '3') { aviso.innerHTML = 'Más de 50 es más de lo que se sabe hoy: ' + pend('[aforo por confirmar]') + '. El merendero y el comedor son los que más mesas tienen.'; aviso.hidden = false; }
+      if (est.tam === '3') { aviso.textContent = 'Más de 50: el merendero es para 70 personas sentadas, pero el comedor cubierto es para 30-35. Si llueve, dentro no cabéis todos a la mesa.' + (est.dor === 'si' ? ' Y la zona de descanso tiene 20 camas: no hay cama para todos.' : ''); aviso.hidden = false; }
+      else if (est.dor === 'si' && est.tam !== '1') { aviso.textContent = 'La zona de descanso tiene 20 camas: si sois más de 20, no hay cama para todos.'; aviso.hidden = false; }
       else aviso.hidden = true;
     }
     botones.forEach((b) => b.addEventListener('click', () => {
@@ -338,13 +339,15 @@
   if (verMapa) verMapa.addEventListener('click', () => {
     const q = (L.mapa || '').trim();
     const aviso = $('mapa-aviso');
-    if (!q) { aviso.textContent = 'La dirección exacta está pendiente del dueño. En cuanto la tengamos, aquí saldrá el mapa.'; return; }
+    if (!q) { aviso.textContent = 'La ubicación exacta está pendiente. En cuanto la tengamos, aquí saldrá el mapa.'; return; }
     const f = document.createElement('iframe');
     f.src = 'https://www.google.com/maps?q=' + encodeURIComponent(q) + '&output=embed';
     f.title = 'Mapa de Google con la ubicación de A Casa das Festas';
     f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
     $('mapa').appendChild(f);
+    const teniaFoco = document.activeElement === verMapa;
     verMapa.closest('.llegar__capa').remove();
+    if (teniaFoco) f.focus();   // el botón desaparece: el foco no se pierde, pasa al mapa
   });
 
   /* ---------- cookies (técnica: solo recuerda que se vio el aviso) ---------- */

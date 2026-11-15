@@ -99,8 +99,9 @@ try {
     await page.click('#arma .op[data-v="c"]'); await page.click('#arma .op[data-v="2"]'); await page.click('#arma .op[data-v="si"]');
     const a = await page.evaluate(() => ({ n: document.querySelectorAll('#arma-lista li').length, dor: !!document.querySelector('#arma-lista li.dor'), pie: !document.getElementById('arma-pie').hidden, rell: [...document.querySelectorAll('#arma-guir path[fill]')].filter((p) => p.getAttribute('fill') !== 'none').length }));
     comprobar(a.n >= 4 && a.dor && a.pie && a.rell === 3, 'Arma tu fiesta: espacios, «para dormir», botón y tres banderines', a);
-    const huecos = await page.evaluate(() => { const l = document.getElementById('arma-lista'); const filas = {}; [...l.children].forEach((li) => { const t = Math.round(li.getBoundingClientRect().top); filas[t] = (filas[t] || 0) + li.getBoundingClientRect().width; }); return Object.values(filas).map((w) => Math.round(w)); });
-    comprobar(new Set(huecos.map((w) => Math.round(w / 20))).size === 1, 'Arma tu fiesta: todas las filas llenas', huecos);
+    // cada fila va de borde a borde (filas de 2 y de 3 tarjetas tienen distinto número de huecos entre ellas)
+    const huecos = await page.evaluate(() => { const l = document.getElementById('arma-lista'); const filas = {}; [...l.children].forEach((li) => { const r = li.getBoundingClientRect(), t = Math.round(r.top); const f = filas[t] || (filas[t] = [Infinity, -Infinity]); f[0] = Math.min(f[0], r.left); f[1] = Math.max(f[1], r.right); }); return Object.values(filas).map((f) => Math.round(f[1] - f[0])); });
+    comprobar(new Set(huecos.map((w) => Math.round(w / 4))).size === 1, 'Arma tu fiesta: todas las filas llenas', huecos);
     await page.click('#arma-cta');
     const c = await page.evaluate(() => ({ tipo: document.getElementById('ct-tipo').value, gente: document.querySelector('#ct-gente [aria-pressed="true"]').dataset.v, dormir: document.getElementById('ct-dormir').checked }));
     comprobar(c.tipo === 'c' && c.gente === '2' && c.dormir, 'el calendario recibe lo elegido', c);
@@ -108,6 +109,8 @@ try {
     await page.click('#ct-cal button:not([disabled]):not(.vacio)');
     const cal = await page.evaluate(() => ({ ext: document.querySelectorAll('#ct-cal .extremo').length, btn: !document.getElementById('ct-btn').disabled, modos: document.getElementById('ct-modos').hidden }));
     comprobar(cal.ext === 1 && cal.btn, 'calendario: se elige un día libre y se activa «Pedir esta fecha»', cal);
+    const res = await page.textContent('#ct-dl');
+    comprobar(/625 €/.test(res) && /21:00/.test(res) && /10:00/.test(res), 'calendario: con zona de descanso, 625 € y salida a las 21:00', res);
     comprobar(cal.modos, 'sin verano: el modo «Verano, por noches» no sale');
     await page.click('#ct-btn');
     comprobar(/no se envía nada/.test(await page.textContent('#ct-msg')), 'petición simulada y avisada');
@@ -115,23 +118,31 @@ try {
     // plano
     const pl = await page.evaluate(() => document.querySelectorAll('#plLista button').length);
     comprobar(pl === 10, 'plano: 10 zonas en la lista', pl);
-    await page.click('#plLista button[data-z="galeria"]');
-    const fi = await page.evaluate(() => ({ p: document.querySelector('#plLista button[data-z="galeria"]').getAttribute('aria-pressed'), t: document.querySelector('.pl-nom').textContent, aforo: !!document.querySelector('.pl-aforo .pend') }));
-    comprobar(fi.p === 'true' && /galer/i.test(fi.t) && fi.aforo, 'plano: elegir una zona cambia la ficha, con [aforo]', fi);
+    await page.click('#plLista button[data-z="merendero"]');
+    const fi = await page.evaluate(() => ({ p: document.querySelector('#plLista button[data-z="merendero"]').getAttribute('aria-pressed'), t: document.querySelector('.pl-nom').textContent, aforo: document.querySelector('.pl-aforo').textContent }));
+    comprobar(fi.p === 'true' && /merendero/i.test(fi.t) && /70/.test(fi.aforo), 'plano: elegir una zona cambia la ficha, con su aforo', fi);
+    await page.click('#plLista button[data-z="prado"]');
+    comprobar(await page.evaluate(() => document.querySelector('.pl-aforo').hidden), 'plano: sin dato, la ficha no enseña la línea de aforo');
     // un día
     await page.focus('#diaRango'); await page.keyboard.press('End');
     const d = await page.evaluate(() => document.getElementById('diaRango').getAttribute('aria-valuetext'));
     comprobar(/dormir/i.test(d || ''), 'un día: el deslizador llega a la noche', d);
     // mapa
+    comprobar(!(await page.$('#mapa iframe')), 'mapa: no se carga hasta pulsar');
+    // sin salir a Google: el iframe recibe una página vacía
+    await page.route('https://www.google.com/maps**', (r) => r.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>mapa</title>' }));
     await page.click('#ver-mapa');
-    comprobar(!(await page.$('#mapa iframe')) && /pendiente/.test(await page.textContent('#mapa-aviso')), 'mapa: sin dirección no carga nada y lo dice');
+    const src = await page.evaluate(() => { const f = document.querySelector('#mapa iframe'); return f ? f.src : ''; });
+    comprobar(/43\.2774/.test(decodeURIComponent(src)), 'mapa: al pulsar, el de Google con el pin de la casa', src);
     // foco con banderín
-    await page.focus('#ct-ant'); await page.keyboard.press('Tab');
+    comprobar(await page.evaluate(() => document.activeElement && document.activeElement.tagName === 'IFRAME'), 'mapa: al pulsar con el foco, el foco pasa al mapa');
+    await page.focus('#arma .op[data-v="c"]'); await page.keyboard.press('Tab');
     comprobar(await page.evaluate(() => document.getElementById('foco-banderin').classList.contains('visto')), 'foco con teclado: cuelga el banderín');
     // textos visibles sin rayas
     comprobar(!/[—–]/.test(await page.evaluate(() => document.body.innerText)), 'texto visible sin rayas largas ni medias');
     // pendientes marcados
-    comprobar(await page.evaluate(() => document.querySelectorAll('.pend').length) > 15, 'lo que falta va marcado entre corchetes');
+    const pe = await page.evaluate(() => ({ total: document.querySelectorAll('.pend').length, contacto: document.querySelectorAll('[data-contacto] .pend, [data-lugar] .pend').length, tel: document.querySelector('.llegar [data-contacto="telefono"] a')?.getAttribute('href') }));
+    comprobar(pe.total >= 1 && pe.contacto === 0 && pe.tel === 'tel:+34670406421', 'contacto y lugar rellenos desde config.js; lo que falta, entre corchetes', pe);
     comprobar(errores.length === 0, 'sin errores en consola', errores.slice(0, 5));
     await ctx.close();
   }

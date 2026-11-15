@@ -57,67 +57,76 @@
     { id: 'terraza', grupo: 'arriba', nom: 'Terraza', tit: 'La terraza',
       formas: ['1100,262 1440,335 1420,480 1385,590 1330,700 1318,880 1278,985 1085,918 1160,808 1200,665 1225,540 1085,505 1112,375'],
       ancla: [1265, 420],
-      hace: 'Una terraza elevada, de baldosa, con barandilla por todo el borde y vistas al valle. Hay sillas de madera, bancos y mesas, y da al lado del merendero.',
+      hace: 'Una terraza en alto, de baldosa, con barandilla por todo el borde y vistas al valle. Hay mesas y sillas recogidas que se pueden sacar, y da al lado del merendero.',
+      dato: 'Superficie: 80 m²',
       fotos: [
         ['p15', 'La terraza con barandilla, sillas de madera y mesas, frente a un valle verde con eucaliptos bajo un cielo azul', 'Con sol'],
         ['p16', 'Una mesa redonda con sillas de madera en la terraza, con el valle detrás', 'La mesa'],
         ['p17', 'La terraza con bancos y sillas de madera, y la casa granate detrás', 'Con la casa']
       ] },
-    { id: 'merendero', grupo: 'arriba', nom: 'Merendero', tit: 'El merendero y el círculo de fuego',
-      formas: ['1480,105 1755,105 1760,735 1480,735'], fuego: [1712, 470, 46],
+    { id: 'merendero', grupo: 'arriba', nom: 'Merendero y barbacoa', tit: 'El merendero y la barbacoa',
+      formas: ['1480,105 1755,105 1760,735 1480,735'],
       ancla: [1620, 330],
-      hace: 'Mesas de picnic de madera sobre la hierba, junto a la casa, con un círculo de fuego en el suelo. Al lado hay un salón de cristal que se abre a este prado.',
+      hace: 'Mesas de picnic de madera sobre la hierba, junto a la casa, con sombrillas para el sol y luz por la noche. Al lado, una barbacoa profesional grande, cubierta y con fregadero.',
+      dato: 'Aforo: 70 personas sentadas',
+      nota: 'La barbacoa funciona solo con carbón, que trae cada grupo. No se permite leña, por riesgo de incendio.',
       fotos: [
         ['p08', 'Mesas de picnic de madera sobre la hierba, con la casa y su salón acristalado detrás', 'Las mesas'],
+        ['p38', 'La parrilla grande de la barbacoa, de acero, con su volante para subirla y bajarla, bajo techo', 'La barbacoa (2026)'],
         ['p09', 'Mesas de picnic de madera junto al salón de cristal, bajo la terraza con barandilla, con el cielo azul', 'Con el salón de cristal']
       ] },
     { id: 'entrada', grupo: 'arriba', nom: 'Entrada y patio', tit: 'La entrada y el patio',
       formas: ['400,652 690,690 1000,782 1158,812 1085,920 1100,940 1275,1000 1275,1118 1105,1118 1010,1020 880,935 700,860 690,800 430,770'],
       ancla: [790, 905],
-      hace: 'Delante de la casa hay un suelo de hormigón y, al pie de la escalera que sube al porche, un patio pequeño de losa con un seto al lado.',
-      nota: 'Por dónde se entra y dónde se aparca: [por confirmar].',
+      hace: 'Delante de la casa hay un suelo de hormigón y, al pie de la escalera que sube al porche, un patio pequeño de losa con un seto al lado. La finca tiene un aparcamiento grande.',
+      nota: 'Dónde está el aparcamiento: [por confirmar].',
       fotos: [
         ['p05', 'La fachada granate de la casa vista desde abajo, con la escalera que sube al porche, un patio de losa al pie y un seto', 'La fachada']
       ] },
-    { id: 'salon', grupo: 'dentro', nom: 'Salón y barra', tit: 'El salón y la barra',
+    { id: 'salon', grupo: 'dentro', nom: 'Descanso: salón rojo', tit: 'La zona de descanso: el salón rojo',
       formas: ['425,172 1072,380 1050,540 350,372 325,330'],
       ancla: [690, 300], aviso: AOJO,
-      hace: 'El salón principal, de paredes rojas, con ventilador de techo, sofá y vitrinas, y la barra, con pared verde, focos colgantes y botellero. Era la cafetería.',
-      nota: 'Las fotos amuebladas son de septiembre de 2021. Hoy el salón está vacío.',
+      hace: 'El salón de paredes rojas de la planta alta. Hoy es la zona de descanso: camas individuales con colchón y funda, aseos de hombre y de mujer en la misma planta y dos radiadores.',
+      dato: 'Entre el salón y la galería: 20 camas',
+      nota: 'Se alquila aparte de la zona de fiesta: 250 € más. La barra de la pared verde sale en las fotos de 2021; si entra en el alquiler: [por confirmar].',
       fotos: [
-        ['p18', 'El salón de paredes rojas con ventilador de techo, sofá, mesa baja y vitrinas, y las mesas al fondo', 'El salón'],
-        ['p19', 'El salón con la barra a un lado y grandes ventanales con estores de bambú al otro', 'La barra y los ventanales'],
-        ['p20', 'La barra de madera con la pared verde, focos colgantes y botellero, con sillas negras delante', 'La pared verde']
+        ['p35', 'Camas individuales con colchón gris y almohada en el salón de paredes rojas, con ventanas y cortinas blancas', 'Con las camas (2026)'],
+        ['p18', 'El salón de paredes rojas con ventilador de techo, sofá, mesa baja y vitrinas, y las mesas al fondo', 'Amueblado (2021)'],
+        ['p20', 'La barra de madera con la pared verde, focos colgantes y botellero, con sillas negras delante', 'La barra (2021)']
       ] },
-    { id: 'galeria', grupo: 'dentro', nom: 'Galería de las rayas', tit: 'La galería de las rayas',
+    { id: 'galeria', grupo: 'dentro', nom: 'Descanso: galería', tit: 'La zona de descanso: la galería de las rayas',
       formas: ['800,524 1052,590 1205,558 1180,665 1145,788 765,684'],
       ancla: [960, 640], aviso: AOJO,
-      hace: 'Una galería acristalada con techo de madera, estores de bambú y una pared de rayas rojas y blancas. Tiene mesas con vistas a la finca.',
-      nota: 'Las fotos son de septiembre de 2021.',
+      hace: 'Una galería acristalada con techo de madera, estores de bambú y una pared de rayas rojas y blancas. Hoy también tiene camas: es parte de la zona de descanso.',
+      dato: 'Entre el salón y la galería: 20 camas',
+      nota: 'Se alquila aparte de la zona de fiesta: 250 € más.',
       fotos: [
-        ['p22', 'La galería acristalada con techo de madera, estores de bambú, mesas con sillas y la pared de rayas rojas y blancas', 'Las rayas'],
-        ['p23', 'La galería con mesas y sillas bajo el techo de madera, con estores de bambú y el valle al fondo', 'Con vistas']
+        ['p36', 'Camas individuales con colchón gris junto a los ventanales y la pared de rayas rojas y blancas de la galería', 'Con las camas (2026)'],
+        ['p22', 'La galería acristalada con techo de madera, estores de bambú, mesas con sillas y la pared de rayas rojas y blancas', 'Con mesas (2021)'],
+        ['p23', 'La galería con mesas y sillas bajo el techo de madera, con estores de bambú y el valle al fondo', 'Con vistas (2021)']
       ] },
     { id: 'comedor', grupo: 'dentro', nom: 'Comedor y cocina', tit: 'El comedor y la cocina',
       formas: ['350,392 770,514 728,672 335,568 255,520 305,430'],
       ancla: [520, 520], aviso: AOJO,
-      hace: 'Un comedor grande con muchas mesas, para sentarse todos juntos, y una cocina industrial con fogones, plancha, mesas de acero y cámara.',
-      nota: 'Qué incluye el alquiler de la cocina y del menaje: [por confirmar].',
+      hace: 'Un comedor cubierto, con aire acondicionado y un aseo al lado, y una cocina con nevera industrial (y un congelador en el almacén), mesas de trabajo, dos fregaderos y una cocina de butano de dos fuegos.',
+      dato: 'Aforo: 30-35 personas',
+      nota: 'Hay platos y cubiertos. Vasos no: hay que traerlos.',
       fotos: [
-        ['p26', 'El comedor grande, con mesas redondas y largas con manteles y sillas de madera', 'El comedor'],
-        ['p28', 'La cocina industrial, con campana, fogones, plancha y una mesa grande de acero', 'La cocina']
+        ['p37', 'El comedor con mesas de manteles amarillos, sillas de madera, pared de piedra y aire acondicionado', 'El comedor (2026)'],
+        ['p28', 'La cocina industrial, con campana, fogones, plancha y una mesa grande de acero', 'La cocina (2021)']
       ] },
     { id: 'vestuarios', grupo: 'dentro', nom: 'Vestuarios', tit: 'Los vestuarios',
       formas: ['1170,815 1300,808 1305,880 1272,962 1105,912'],
       ancla: [1215, 880], aviso: AOJO,
-      hace: 'Vestuarios con duchas y aseos, de paredes amarillas, con bancos de madera y dos lavabos con flores.',
+      hace: 'Dos vestuarios amplios, de hombre y de mujer, con bancos de madera, para dejar mochilas y ropa. Las duchas, con agua caliente, son para quien alquila también la zona de descanso.',
       fotos: [
         ['p33', 'Un vestuario de paredes amarillas con un banco de madera y una puerta oscura abierta', 'El vestuario'],
         ['p32', 'Dos lavabos blancos sobre un mueble oscuro, con espejos y flores blancas, bajo paredes amarillas', 'Los lavabos']
       ] },
-    { id: 'campo', grupo: 'fuera', nom: 'Campo de fútbol', tit: 'El campo de fútbol',
+    { id: 'campo', grupo: 'fuera', nom: 'Fútbol y voleibol', tit: 'El campo de fútbol y el de voleibol',
       borde: 'campo', aviso: FLECHA,
-      hace: 'Un campo de fútbol de hierba, con porterías y árboles alrededor, aparte de la casa.',
+      hace: 'Un campo de fútbol de hierba, con porterías y árboles alrededor, aparte de la casa, y otro de voleibol. No son profesionales, pero hay balones.',
+      dato: 'La finca entera: 10.000 m²',
       nota: 'No sale en la foto del dron: está fuera del encuadre.',
       fotos: [
         ['p11', 'Un campo de fútbol de hierba con una portería, rodeado de árboles y monte', 'El campo']
@@ -271,9 +280,7 @@
     fTxt.setAttribute('aria-atomic', 'true');
     var fNom = el('h3', 'pl-nom');
     var fHace = el('p', 'pl-hace');
-    var fAforo = el('p', 'pl-aforo');
-    fAforo.appendChild(document.createTextNode('Aforo: '));
-    fAforo.appendChild(el('span', 'pend', '[aforo]'));
+    var fAforo = el('p', 'pl-aforo');   // aforo o superficie, solo en las zonas que lo tienen
     var fNota = el('p', 'nota pl-nota');
     var fAviso = el('p', 'nota pl-aviso');
     [fNom, fHace, fAforo, fNota, fAviso].forEach(function (e) { fTxt.appendChild(e); });
@@ -316,6 +323,8 @@
       colocaRotulo();
       fNom.textContent = z.tit;
       fHace.textContent = z.hace;
+      conPend(fAforo, z.dato);
+      fAforo.hidden = !z.dato;
       conPend(fNota, z.nota);
       conPend(fAviso, z.aviso);
       fNota.hidden = !z.nota;
