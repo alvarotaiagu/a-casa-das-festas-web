@@ -17,7 +17,8 @@
    Coordenadas: los polígonos están escritos sobre la foto cenital reducida
    a 2000 x 1125 px y se escalan por 1,28 al viewBox 2560 x 1440 del SVG
    (el mismo de la foto, para que no se descoloquen al cambiar de tamaño).
-   Zonas "dentro" (grupo 'dentro'): colocadas a ojo bajo el tejado.
+   Zonas "dentro" (grupo 'dentro'): bajo el tejado, según el croquis del dueño
+   (2026-11-16) y la foto que marcó su hija; posición aproximada.
    Zonas "fuera": sin polígono, solo flecha en el borde del plano.
    Nada de fetch: los datos están aquí, la web también se abre con file://.
    ===================================================================== */
@@ -35,7 +36,7 @@
     }).join(' ');
   }
 
-  var AOJO = 'Esta zona está colocada a ojo en el plano, por confirmar con el dueño.';
+  var AOJO = 'Está dentro de la casa: en el plano, la posición es aproximada.';
   var FLECHA = 'La flecha del borde es orientativa: dónde queda exactamente, [por confirmar].';
   var SIZES = '(min-width:1240px) 360px, (min-width:900px) 30vw, (min-width:600px) 45vw, 100vw';
 
@@ -57,7 +58,7 @@
     { id: 'terraza', grupo: 'arriba', nom: 'Terraza', tit: 'La terraza',
       formas: ['1100,262 1440,335 1420,480 1385,590 1330,700 1318,880 1278,985 1085,918 1160,808 1200,665 1225,540 1085,505 1112,375'],
       ancla: [1265, 420],
-      hace: 'Una terraza en alto, de baldosa, con barandilla por todo el borde y vistas al valle. Hay mesas y sillas recogidas que se pueden sacar, y da al lado del merendero.',
+      hace: 'Una terraza en alto, de baldosa, con barandilla por todo el borde y vistas al valle. Hay mesas y sillas recogidas que se pueden sacar, y da al lado del merendero. Se sube por escaleras, desde fuera o desde dentro de la casa; debajo está el comedor.',
       dato: 'Superficie: 80 m²',
       fotos: [
         ['p15', 'La terraza con barandilla, sillas de madera y mesas, frente a un valle verde con eucaliptos bajo un cielo azul', 'Con sol'],
@@ -83,21 +84,21 @@
       fotos: [
         ['p05', 'La fachada granate de la casa vista desde abajo, con la escalera que sube al porche, un patio de losa al pie y un seto', 'La fachada']
       ] },
-    { id: 'salon', grupo: 'dentro', nom: 'Descanso: salón rojo', tit: 'La zona de descanso: el salón rojo',
-      formas: ['425,172 1072,380 1050,540 350,372 325,330'],
-      ancla: [690, 300], aviso: AOJO,
-      hace: 'El salón de paredes rojas de la planta alta. Hoy es la zona de descanso: camas bajas, con colchón sobre somier, aseos de hombre y de mujer en la misma planta y dos radiadores.',
-      dato: 'Entre el salón y la galería: 20 camas',
+    { id: 'salon', grupo: 'dentro', nom: 'Descanso: habitación', tit: 'La zona de descanso: la habitación compartida',
+      formas: ['420,248 780,262 1112,360 1060,770 322,585 330,360'],
+      ancla: [880, 470], aviso: AOJO,
+      hace: 'En la planta de arriba, la habitación de paredes rojas: camas bajas, con colchón sobre somier, y dos radiadores. Al lado, aseos de hombre y de mujer. Se sube por la escalera de dentro o por la de fuera.',
+      dato: 'Plazas: 12 camas',
       nota: 'Se alquila aparte de la zona de fiesta: 250 € más.',
       fotos: [
         ['p35', 'Camas individuales con colchón gris y almohada en el salón de paredes rojas, con ventanas y cortinas blancas', 'Con las camas (2026)'],
         ['p18', 'El salón de paredes rojas con ventilador de techo, sofá, mesa baja y vitrinas, y las mesas al fondo', 'Amueblado (2021)']
       ] },
     { id: 'galeria', grupo: 'dentro', nom: 'Descanso: galería', tit: 'La zona de descanso: la galería de las rayas',
-      formas: ['800,524 1052,590 1205,558 1180,665 1145,788 765,684'],
-      ancla: [960, 640], aviso: AOJO,
-      hace: 'Una galería acristalada con techo de madera, estores de bambú y una pared de rayas rojas y blancas. Hoy también tiene camas: es parte de la zona de descanso.',
-      dato: 'Entre el salón y la galería: 20 camas',
+      formas: ['380,122 790,232 780,262 420,248 330,360 322,585 215,525'],
+      ancla: [275, 400], aviso: AOJO,
+      hace: 'En la planta de arriba, una galería acristalada que rodea la habitación por dos lados, con techo de madera, estores de bambú y una pared de rayas rojas y blancas. Hoy tiene camas: es parte de la zona de descanso.',
+      dato: 'Plazas: 8 camas',
       nota: 'Se alquila aparte de la zona de fiesta: 250 € más.',
       fotos: [
         ['p36', 'Camas individuales con colchón gris junto a los ventanales y la pared de rayas rojas y blancas de la galería', 'Con las camas (2026)'],
@@ -105,9 +106,9 @@
         ['p23', 'La galería con mesas y sillas bajo el techo de madera, con estores de bambú y el valle al fondo', 'Con vistas (2021)']
       ] },
     { id: 'comedor', grupo: 'dentro', nom: 'Comedor y cocina', tit: 'El comedor y la cocina',
-      formas: ['350,392 770,514 728,672 335,568 255,520 305,430'],
-      ancla: [520, 520], aviso: AOJO,
-      hace: 'Un comedor cubierto, con aire acondicionado y un aseo al lado, y una cocina con nevera industrial (y un congelador en el almacén), mesas de trabajo, dos fregaderos y una cocina de butano de dos fuegos.',
+      formas: ['1225,540 1390,560 1330,700 1318,880 1278,985 1085,918 1160,808 1200,665'],
+      ancla: [1245, 790], aviso: AOJO,
+      hace: 'En la planta baja, debajo de la terraza, un comedor cubierto con aire acondicionado. Al lado, un aseo y la cocina, con nevera industrial (y un congelador en el almacén) con nevera industrial (y un congelador en el almacén), mesas de trabajo, dos fregaderos y una cocina de butano de dos fuegos.',
       dato: 'Aforo: 30-35 personas',
       nota: 'Hay platos y cubiertos. Vasos no: hay que traerlos.',
       fotos: [
@@ -115,9 +116,9 @@
         ['p28', 'La cocina industrial, con campana, fogones, plancha y una mesa grande de acero', 'La cocina (2021)']
       ] },
     { id: 'vestuarios', grupo: 'dentro', nom: 'Vestuarios', tit: 'Los vestuarios',
-      formas: ['1170,815 1300,808 1305,880 1272,962 1105,912'],
-      ancla: [1215, 880], aviso: AOJO,
-      hace: 'Dos vestuarios amplios, de hombre y de mujer, con bancos de madera, para dejar mochilas y ropa. Las duchas, con agua caliente, son para quien alquila también la zona de descanso.',
+      formas: ['560,178 790,240 785,470 555,410'],
+      ancla: [672, 320], aviso: AOJO,
+      hace: 'En la planta baja, entre la cocina y el recibidor de la entrada, dos vestuarios amplios, de hombre y de mujer, con bancos de madera, para dejar mochilas y ropa. Las duchas, con agua caliente, son para quien alquila también la zona de descanso.',
       fotos: [
         ['p33', 'Un vestuario de paredes amarillas con un banco de madera y una puerta oscura abierta', 'El vestuario'],
         ['p32', 'Dos lavabos blancos sobre un mueble oscuro, con espejos y flores blancas, bajo paredes amarillas', 'Los lavabos']
