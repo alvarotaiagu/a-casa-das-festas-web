@@ -78,21 +78,20 @@
     { id: 'entrada', grupo: 'arriba', nom: 'Entrada y patio', tit: 'La entrada y el patio',
       formas: ['400,652 690,690 1000,782 1158,812 1085,920 1100,940 1275,1000 1275,1118 1105,1118 1010,1020 880,935 700,860 690,800 430,770'],
       ancla: [790, 905],
-      hace: 'Delante de la casa hay un suelo de hormigón y, al pie de la escalera que sube al porche, un patio pequeño de losa con un seto al lado. La finca tiene un aparcamiento grande.',
-      nota: 'Dónde está el aparcamiento: [por confirmar].',
+      hace: 'Delante de la casa hay un suelo de hormigón y un patio pequeño de losa con un seto al lado. Se entra por una rampa, sin escalones.',
+      nota: 'El aparcamiento está dentro de la finca, cerrado con portal. Caben unos 30 coches.',
       fotos: [
         ['p05', 'La fachada granate de la casa vista desde abajo, con la escalera que sube al porche, un patio de losa al pie y un seto', 'La fachada']
       ] },
     { id: 'salon', grupo: 'dentro', nom: 'Descanso: salón rojo', tit: 'La zona de descanso: el salón rojo',
       formas: ['425,172 1072,380 1050,540 350,372 325,330'],
       ancla: [690, 300], aviso: AOJO,
-      hace: 'El salón de paredes rojas de la planta alta. Hoy es la zona de descanso: camas individuales con colchón y funda, aseos de hombre y de mujer en la misma planta y dos radiadores.',
+      hace: 'El salón de paredes rojas de la planta alta. Hoy es la zona de descanso: camas bajas, con colchón sobre somier, aseos de hombre y de mujer en la misma planta y dos radiadores.',
       dato: 'Entre el salón y la galería: 20 camas',
-      nota: 'Se alquila aparte de la zona de fiesta: 250 € más. La barra de la pared verde sale en las fotos de 2021; si entra en el alquiler: [por confirmar].',
+      nota: 'Se alquila aparte de la zona de fiesta: 250 € más.',
       fotos: [
         ['p35', 'Camas individuales con colchón gris y almohada en el salón de paredes rojas, con ventanas y cortinas blancas', 'Con las camas (2026)'],
-        ['p18', 'El salón de paredes rojas con ventilador de techo, sofá, mesa baja y vitrinas, y las mesas al fondo', 'Amueblado (2021)'],
-        ['p20', 'La barra de madera con la pared verde, focos colgantes y botellero, con sillas negras delante', 'La barra (2021)']
+        ['p18', 'El salón de paredes rojas con ventilador de techo, sofá, mesa baja y vitrinas, y las mesas al fondo', 'Amueblado (2021)']
       ] },
     { id: 'galeria', grupo: 'dentro', nom: 'Descanso: galería', tit: 'La zona de descanso: la galería de las rayas',
       formas: ['800,524 1052,590 1205,558 1180,665 1145,788 765,684'],

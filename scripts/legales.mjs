@@ -12,7 +12,7 @@ const MAIL = `<a href="mailto:${CORREO}">${CORREO}</a>`;
 
 const TITULAR = `<dl class="legal__dl">
   <dt>Titular</dt><dd>José Manuel Barca Pérez</dd>
-  <dt>NIF</dt><dd>${P('[NIF]')}</dd>
+  <dt>NIF</dt><dd>52432858-B</dd>
   <dt>Nombre comercial</dt><dd>A Casa das Festas</dd>
   <dt>Domicilio</dt><dd>Lugar de San Miguel de Vilela, parroquia de Vilela, Carballo (A Coruña)</dd>
   <dt>Teléfono</dt><dd><a href="tel:+34670406421">670 406 421</a></dd>
@@ -78,7 +78,7 @@ ${TITULAR}
 <p>${P('PENDIENTE: completar tras la revisión de accesibilidad previa a la publicación.')}</p>
 <p>La web se puede usar entera con el teclado y con lector de pantalla: contrastes suficientes, foco visible (un contorno y un banderín que cuelga bajo el elemento), textos alternativos en las fotos, y animaciones que se paran si tu sistema pide reducir el movimiento. El toldo, los banderines y el plano de la finca son adorno o ayuda visual: la información está también en el texto.</p>
 <h2>La finca</h2>
-<p>${P('PENDIENTE: cómo es el acceso a la casa, la terraza y los aseos para personas con movilidad reducida.')}</p>
+<p>Se entra a la finca por una rampa para personas con movilidad reducida. No hay escalones para llegar a la entrada, al comedor ni a los aseos, y hay un aseo adaptado. La zona de descanso está en la planta de arriba.</p>
 <h2>Contacto</h2>
 <p>Si encuentras una barrera, escribe a ${MAIL}. Te responderemos y te daremos la información en un formato accesible.</p>`,
   },
